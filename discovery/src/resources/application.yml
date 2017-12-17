@@ -1,0 +1,8 @@
+server:
+  port: 8761
+eureka:
+  client:
+    fetch-registry: false    # 当前服务不需要到eureka-server上注册，即本身为euerka-server
+    register-with-eureka: false # 当前服务不需要到eureka-server上注册，即本身为euerka-server
+  instance:
+    hostname: localhost   #hostname

@@ -1,0 +1,16 @@
+# spring cloud 使用bootstrap.yml 负责从外部资源加载配置属性
+spring:
+  application:
+    name: config    # 向eureka注册的服务名为config
+  profiles:
+    active: native # 配置服务默认为本地配置（默认为git配置）
+
+# 配置eureka
+eureka:
+  instance:
+    non-secure-port: ${server.port:8888}   # 向eurek-server注册的端口号(本应用的端口号)，非ssl端口，若环境变量中没有server.port的值，则会使用8080端口
+    metadata-map:
+      instanceId: ${spring.application.name}:${random.value}  #配置在eureka-server的实例ID
+  client:
+    service-url:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/    #设置eureka-server的地址

@@ -1,0 +1,20 @@
+# spring cloud 使用bootstrap.yml 负责从外部资源加载配置属性
+spring:
+  application:
+    name: some
+  cloud:
+    config:    #配置服务
+      enabled: true  # 使用配置服务
+      discovery:     # 通过发现服务获取配置服务！！！
+        enabled: true
+        service-id: config   #　指定 config server 的服务名，将会通过 eureka server 发现config server
+
+# 配置eureka
+eureka:
+  instance:
+    non-secure-port: ${server.port:8083} # 向eurek-server注册的端口号(本应用的端口号)，非ssl端口，若环境变量中没有server.port的值，则会使用8080端口
+    metadata-map:
+          instanceId: ${spring.application.name}:${random.value}  #配置在eureka-server的实例ID
+  client:
+    service-url:
+      defalutZone: http://${euerka.host:localhost}:${uereka.port:8761}/eureka

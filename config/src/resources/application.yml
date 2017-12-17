@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config   # 其他的应用的配置文件都要放在classpath下的config文件夹中
+                                                # 并且配置文件命名的规则为：应用名+profile.yml
+
+server:
+  port: 8888
