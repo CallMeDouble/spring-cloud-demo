@@ -19,7 +19,7 @@ public class UiController {
 	@Autowired
 	private PersonHystrixService personHystrixService;
 
-	@RequestMapping("/dispatch")
+	@RequestMapping("/person")
 	public List<Person> sendMessage(@RequestBody String personName) {
 		return personHystrixService.save(personName);
 	}

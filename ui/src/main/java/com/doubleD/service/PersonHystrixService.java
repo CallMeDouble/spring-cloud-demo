@@ -23,7 +23,7 @@ public class PersonHystrixService {
         return personService.save(name);
     }
 
-    public List<Person> fallbackSave(){
+    public List<Person> fallbackSave(String name){
         List<Person> people = new ArrayList<Person>();
         Person p = new Person("person service 故障");
         people.add(p);
